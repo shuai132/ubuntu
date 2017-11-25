@@ -1,0 +1,31 @@
+ubuntu wine卸载软件无法删除图标问题
+转载 2011年06月07日 11:19:00
+
+    标签：
+    ubuntu /
+    windows /
+    终端 /
+    测试
+
+1.执行以下代码
+cd ~/.local/share/applications/wine
+ls
+rmdir  xxx
+2 .可以进入文件夹  删除
+打开主文件夹，点击查看。选择显示隐藏文件。
+进入同上目录，删除剩余图标与文件夹
+
+########################################################
+虽然使用wine可以运行一些windows程序，但wine并不是万能的，有些程序还是无法运行，而且用wine运行windows软件时，CPU占用率居然高达100%，所以，可以通过以下方式将wine卸载掉：
+1.在终端里输入：
+sudo apt-get remove --purge wine
+即可卸载wine
+2.然后再输入：
+rm -r ~/.wine
+3.卸载残留不用得软件包，输入：
+sudo apt-get autoremove
+即可彻底删除wine。
+
+但我们在用wine卸载一些windows程序后，可能在“应用程序”-“其它”菜单里还残留着它的图标，我们可以通过以下方式把它彻底清除掉：
+1.首先将 ~/.local/share/applications/ 下和 ~/.local/share/applications/wine/Programs/ 下相关文件或目录删除掉。
+2.然后再删除 ~/.config/menus/applications-merged/ 里面相关的文件。
