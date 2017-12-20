@@ -1,0 +1,15 @@
+indicator-sysmonitor
+nmon
+git
+cmake
+minicom
+nfs-kernel-sever
+exfat-fuse exfat-utils
+wget curl
+filezilla
+unzip
+
+ruby
+gcc g++
+lua5.3
+golang

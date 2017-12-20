@@ -1,30 +1,30 @@
 1.视频分辨率问题
-#在 ~/.profile 最末尾添加修改分辨率的命令：
-     xrandr --newmode "2560x1080_60.00"  230.00  2560 2720 2992 3424  1080 1083 1093 1120 -hsync +vsync
-     xrandr --addmode HDMI-2 2560x1080_60.00
+cvt 2560 1080
+使用后面的字符串继续如下命令
+xrandr --newmode "2560x1080_60.00"  230.00  2560 2720 2992 3424  1080 1083 1093 1120 -hsync +vsync
+xrandr --addmode HDMI-2 2560x1080_60.00
 
-2.Android Studio路径
-/home/shuai/Application/android-studio/bin/studio.sh
-
-3.Android SDK不通用问题
+3.WIFI无法启用
+sudo vi /etc/modprobe.d/blacklist.conf
+最后一行加入
+blacklist acer-wmi
+保存退出 重启
 
 4.WIFI速度奇慢
 sudo gedit /etc/modprobe.d/iwlwifi.conf
 options iwlwifi 11n_disable=1
 
-5.在Ubuntu下安装了AndroidStudio之后发现字体非常非常丑，google一番之后尝试了各种办法，最后发现了一个完美的解决方式，就是安装一个带fontfix的openjdk：
-
-sudo add-apt-repository ppa:no1wantdthisname/openjdk-fontfix
-sudo apt-get update 
-sudo apt-get install openjdk-8-jdk
-其他的发行版没有试过，估计都差不多。 
-字体看起来真是特别的爽！
-
-
-
-
-5.windows软件
+5.windows软件(不建议使用)
 sudo apt-get install playonlinux
+
+6.inotify limit error
+vim /etc/sysctl.conf
+添加的内容：
+fs.inotify.max_user_watches=8192000
+重启生效
+
+检查是否生效：cat /proc/sys/fs/inotify/max_user_watches
+临时生效方法：cat 8192000 > /proc/sys/fs/inotify/max_user_watches
 
 7.设置任务栏底部
 gsettings set com.canonical.Unity.Launcher launcher-position Bottom
@@ -32,15 +32,14 @@ gsettings set com.canonical.Unity.Launcher launcher-position Bottom
 8.exFAT
 sudo apt-get install exfat-fuse exfat-utils
 
-9.swap
-swapon -a 会开启/etc/fstab上定义的所有swap
-swapoff -a会关闭所有swap
+9.qt cannot find -lGL
+sudo apt-get install libgl1-mesa-dev
 
-cat /proc/meminfo会显示swap的情况
-
-另外下面的命令也会显示swap:
-
-swapon -s
-Filename                Type        Size    Used    Priority
-/dev/sda5                               partition    4192252    0    -1
+10.fwupd占用一个cpu100%解决办法 
+1：在终端输入 top ，查看fwupd进程的id号。
+2：输入 sudo kill id，把进程kill掉。
+3：在终端继续输入 sudo apt-get install -f  或者 sudo dpkg --configure -a
+4：若是提示无法解析包的话，输入 sudo rm /var/lib/apt/lists/* -vf 
+5：更新一下 sudo apt-get update
+6：再输入第三步的命令。
 

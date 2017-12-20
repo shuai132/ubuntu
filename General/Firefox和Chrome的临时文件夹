@@ -1,0 +1,9 @@
+    Firefox
+
+    打开一个新页面，地址栏输入about:cache命令，可以查看临时文件目录，如果要修改，则要输入about:config命令，打开页面，点击右键，选择“新建→字符串”，在弹出的“新的字符串值”对话框“首选项名称”中输入“browser.cache.disk.parent_directory”确定，在下个窗口中输入字符串的值，即新的文件路径，如R:\FirefoxCacheDir，再点击确定，就可以了。以后想再次修改，再打开这个页面，找到新建的这个选项，双击就可以进行修改。
+
+    Chrome
+
+    chrome的快捷方式后边加：--disk-cache-dir=自己想要的目录，如 --disk-cache-dir=R:\ChromeCache，注意--前要加空格
+
+    如果也要同时修改个人目录，则要--user-data-dir=自己想要的目录，如--user-data-dir=D:\myName。值得注意的是，这个修改只对当前的快捷方式有效，重新创建的快捷方式则要重新来过，如果想彻底修改，则需要进注册表，这里就不多说了，需要的话可以去百度一下。

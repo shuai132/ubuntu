@@ -1,0 +1,28 @@
+# for Java
+export JAVA_8_HOME=/home/shuai/Application/android-studio/jre
+export JAVA_HOME=$JAVA_8_HOME
+export PATH=$JAVA_HOME:$PATH
+
+export PYTHON_ROOT='/usr/bin/python'
+export NDK_ROOT=/home/shuai/Android/Ndk/android-ndk-r9d
+
+# golang
+PATH=$PATH:/usr/local/go/bin
+
+# adb
+PATH=$PATH:~/Android/Sdk/platform-tools
+
+# gradle
+PATH=$PATH:~/.gradle/wrapper/dists/gradle-4.1-all/bzyivzo6n839fup2jbap0tjew/gradle-4.1/bin
+
+# ndk
+PATH=$PATH:~/Android/Ndk/android-ndk-r15b/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/bin
+
+# gcc arm
+PATH=$PATH:~/Application/gcc-arm-none-eabi-5_4-2016q3/bin
+
+#alias
+alias hdmi='sh ~/myconfig/hdmi.sh'
+alias fzf='~/.fzf/bin/fzf'
+alias ll='ls -lh'
+alias lua='lua5.3'
