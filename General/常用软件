@@ -1,15 +1,17 @@
 indicator-sysmonitor
 nmon
+nfs-kernel-sever
+exfat-fuse exfat-utils
+wxhexeditor
+
+
 git
 cmake
 minicom
-nfs-kernel-sever
-exfat-fuse exfat-utils
-wget curl
+wget curl ruby
 filezilla
 unzip
 
-ruby
 gcc g++
 lua5.3
 golang

@@ -32,9 +32,6 @@ gsettings set com.canonical.Unity.Launcher launcher-position Bottom
 8.exFAT
 sudo apt-get install exfat-fuse exfat-utils
 
-9.qt cannot find -lGL
-sudo apt-get install libgl1-mesa-dev
-
 10.fwupd占用一个cpu100%解决办法 
 1：在终端输入 top ，查看fwupd进程的id号。
 2：输入 sudo kill id，把进程kill掉。

@@ -1,0 +1,9 @@
+sudo vi /etc/exports	#/home/fa/nfs *(rw,sync,no_root_squash,no_subtree_check)
+sudo exportfs -r
+
+sudo /etc/init.d/rpcbind start
+sudo /etc/init.d/nfs-kernel-server start
+
+sudo mount -t nfs -rw 192.168.2.113:/home/fa/nfs nanopi_nfs/
+
+sudo chown -R shuai nanopi_nfs/*
