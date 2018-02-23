@@ -1,0 +1,51 @@
+在systemWorkBench中使用st-link调试程序
+原创 2017年03月22日 16:44:17
+
+    标签：
+    systemWorkBench stli
+
+第一次使用systemWorkBench和st-link。安装编译过程很顺利。傻瓜操作到调试出现如下错误：
+
+Info : device id = 0x100f6413
+Info : flash size = 512kbytes
+Info : Unable to match requested speed 2000 kHz, using 1800 kHz
+Info : Unable to match requested speed 2000 kHz, using 1800 kHz
+adapter speed: 1800 kHz
+Error: timed out while waiting for target halted
+TARGET: STM32F407VETx.cpu - Not halted
+in procedure 'reset'
+in procedure 'ocd_bouncer'
+
+
+Info : Unable to match requested speed 2000 kHz, using 1800 kHz
+Info : Unable to match requested speed 2000 kHz, using 1800 kHz
+adapter speed: 1800 kHz
+Error: timed out while waiting for target halted
+TARGET: STM32F407VETx.cpu - Not halted
+in procedure 'reset'
+
+in procedure 'ocd_bouncer'
+
+
+GDB提示无法复位硬件。原来是systemWorkBench默认使用工程的调试脚本。脚本中默认需要复位。跳过就好了。
+
+方法是修改工程中的.cfg
+
+reset_config srst_only srst_nogate前面加上#
+
+并添加一行内容：reset_config none separate
+
+
+方法来自
+
+https://github.com/vsergeev/arm-bmw-sw/issues/1和
+
+http://www.2cto.com/kf/201612/574739.html
+
+但是他们的文章是英文或者并没有标注出错误内容。基友们百度可能无法搜到这个方法。so~在巨人的肩膀上记录这个错误。
+
+
+
+号外：stlink的usb驱动必须使用官方驱动。否则即使keil能正常使用的stlink workbenth也未必正常使用。
+
+http://www.openstm32.org/faq1
