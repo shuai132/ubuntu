@@ -1,0 +1,2 @@
+sudo rm /var/crash/*
+sudo gedit /etc/default/apport
